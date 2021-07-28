@@ -1,0 +1,10 @@
+html {
+  margin: 0 auto;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
