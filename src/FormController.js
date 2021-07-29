@@ -5,6 +5,7 @@ import Q3 from './questions/Q3';
 // import Q4 from './Q4';
 // import Q5 from './Q5';
 import EndMessage from './EndMessage';
+import State from './State';
 
 const FormController = () => {
   const [component, setComponent] = useState(1);
@@ -85,6 +86,15 @@ const FormController = () => {
           Submit
         </button>
       )} */}
+      {/* IDEA BELOW */}
+      {/* {page !== 4 && <button onClick={goNextPage}>Go Next</button>}
+      {page === 4 && (
+        <button type="submit" onClick={submit}>
+          Submit
+        </button>
+      )} */}
+
+      <State state={state} />
     </div>
   );
 };
