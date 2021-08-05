@@ -5,7 +5,7 @@ import Q3 from './questions/Q3';
 // import Q4 from './Q4';
 // import Q5 from './Q5';
 import EndMessage from './EndMessage';
-import State from './State';
+// import State from './State';
 
 const FormController = () => {
   const [component, setComponent] = useState(1);
@@ -79,7 +79,7 @@ const FormController = () => {
         {component === 5 && <Q5 state={state} handleChange={handleChange} />} 
         */}
         {component < 4 && <button onClick={nextComponent}>Go Next</button>}
-        {component > 3 && <EndMessage />}
+        {component > 4 && <EndMessage />}
       </div>
       {/* {component === 3 && (
         <button type="submit" onClick={submit}>
@@ -94,7 +94,7 @@ const FormController = () => {
         </button>
       )} */}
 
-      <State state={state} />
+      {/* <State state={state} /> */}
     </div>
   );
 };
