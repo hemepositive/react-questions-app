@@ -5,6 +5,7 @@ import { lightTheme, darkTheme } from './styles/theme';
 import { GlobalStyles } from './styles/global';
 
 export default function App() {
+  const [state, setState] = useState({});
   const [on, setOn] = useState(false);
   const [theme, setTheme] = useState('light');
 
@@ -21,15 +22,24 @@ export default function App() {
 
   const toggleOn = () => {
     setOn(on => !on);
+    setTheme('dark');
+  };
+
+  const Hero = () => {
+    return (
+      <>
+        <h1>MultiStep Form</h1>
+        <p>Answer questions honestly but quickly.</p>
+        <button onClick={toggleOn}>Start</button>
+      </>
+    );
   };
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles />
-      <h1>MultiStep Form</h1>
-      <p>Answer questions honestly but quickly.</p>
-      <button onClick={toggleTheme}>Toggle Dark/"Incognito" Mode</button>
-      {on ? <FormController /> : <button onClick={toggleOn}>Start</button>}
+      {/* <button onClick={toggleTheme}>Toggle Dark/"Incognito" Mode</button> */}
+      {on ? <FormController /> : <Hero toggleOn={toggleOn} />}
     </ThemeProvider>
   );
 }

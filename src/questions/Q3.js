@@ -6,13 +6,13 @@ const Q3 = ({ state, handleChange, handleTime }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(time => time + 1);
-      console.log(`Interval time: ${time}`);
       handleTime(time);
     });
     return () => {
       clearInterval(interval);
     };
   }, [time]);
+
   return (
     <>
       <h2>I get angry when I think of those people.</h2>

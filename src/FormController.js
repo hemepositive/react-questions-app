@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import { Card } from './styles/Card';
 import Q1 from './questions/Q1';
 import Q2 from './questions/Q2';
 import Q3 from './questions/Q3';
 // import Q4 from './Q4';
 // import Q5 from './Q5';
 import EndMessage from './EndMessage';
-// import State from './State';
 
 const FormController = () => {
   const [component, setComponent] = useState(1);
@@ -13,13 +13,15 @@ const FormController = () => {
   const [ms, setMS] = useState(0);
 
   const nextComponent = () => {
-    if (component > 4) return;
+    if (component > 3) {
+      return;
+    }
     setComponent(component => component + 1);
   };
 
   const handleTime = time => {
     setMS(time);
-    console.log(`Miliseconds: ${ms}`);
+    // console.log(`Miliseconds: ${ms}`);
   };
 
   const handleChange = event => {
@@ -41,18 +43,18 @@ const FormController = () => {
 
   return (
     <div>
-      <h2 style={{ color: 'red', textTransform: 'uppercase' }}>
+      {/* <h2 style={{ color: 'red', textTransform: 'uppercase' }}>
         Form Controller
-      </h2>
+      </h2> */}
       <div>
-        <progress max="5" value={component} />
+        <progress max="3" value={component} />
       </div>
-      {ms && (
+      {/* {ms && (
         <h3 style={{ color: 'blue', textTransform: 'uppercase' }}>
           Time: {ms}
         </h3>
-      )}
-      <div>
+      )} */}
+      <Card>
         {component === 1 && (
           <Q1
             state={state}
@@ -78,9 +80,9 @@ const FormController = () => {
         {component === 4 && <Q4 state={state} handleChange={handleChange} />}
         {component === 5 && <Q5 state={state} handleChange={handleChange} />} 
         */}
-        {component < 4 && <button onClick={nextComponent}>Go Next</button>}
-        {component > 4 && <EndMessage />}
-      </div>
+        {component <= 3 && <button onClick={nextComponent}>Go Next</button>}
+        {component > 3 && <EndMessage />}
+      </Card>
       {/* {component === 3 && (
         <button type="submit" onClick={submit}>
           Submit
