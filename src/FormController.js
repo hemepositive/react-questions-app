@@ -7,7 +7,7 @@ import Q3 from './questions/Q3';
 // import Q5 from './Q5';
 import EndMessage from './EndMessage';
 
-const FormController = () => {
+const FormController = ({ endQuestions }) => {
   const [component, setComponent] = useState(1);
   const [state, setState] = useState({});
   const [ms, setMS] = useState(0);
@@ -15,6 +15,7 @@ const FormController = () => {
   const nextComponent = () => {
     if (component > 3) {
       return;
+      // endQuestions();
     }
     setComponent(component => component + 1);
   };
