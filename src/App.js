@@ -8,7 +8,7 @@ import EndMessage from './EndMessage';
 
 export default function App() {
   const [state, setState] = useState({});
-  const [phase, setPhase] = useState('pre');
+  const [phase, setPhase] = useState('HOME');
   const [on, setOn] = useState(false);
   const [light, setLight] = useState(true);
 
@@ -36,21 +36,20 @@ export default function App() {
   //   }
   // }
 
-  const phaseShift = phase => {
-    switch (phase) {
-      case 'pre':
-        return <Hero startQuestions={startQuestions} />;
-      case 'active':
-        return <FormController endQuestions={endQuestions} />;
-      case 'end':
-        return <EndMessage />;
-      default:
-          return null;
-    }
-  };
+  // const phaseShift = phase => {
+  //   switch (phase) {
+  //     case 'pre':
+  //       return <Hero startQuestions={startQuestions} />;
+  //     case 'active':
+  //       return <FormController endQuestions={endQuestions} />;
+  //     case 'end':
+  //       return <EndMessage />;
+  //     default:
+  //       return null;
+  //   }
+  // };
 
   const startQuestions = e => {
-    setPhase('active');
     setLight(false);
   };
 
@@ -58,12 +57,12 @@ export default function App() {
     setPhase('end');
   };
 
-  const Hero = () => {
+  const Home = () => {
     return (
       <>
         <h1>MultiStep Form</h1>
         <p>Answer questions honestly but quickly.</p>
-        <button onClick={startQuestions}>Start</button>
+        <button onClick={() => setPhase('QUESTIONAIRE')}>Start</button>
       </>
     );
   };
@@ -71,7 +70,9 @@ export default function App() {
   return (
     <ThemeProvider theme={light === true ? lightTheme : darkTheme}>
       <GlobalStyles />
-      {phaseShift(phase)}
+      {phase === 'HOME' && <Home startQuestions={startQuestions} />}
+      {phase === 'QUESTIONAIRE' && <FormController setPhase={setPhase} />}
+      {phase === 'END' && <h1>END</h1>}
     </ThemeProvider>
   );
 }

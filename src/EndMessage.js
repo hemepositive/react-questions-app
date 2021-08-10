@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 
-export default () => {
+export default ({ setPhase }) => {
   // do a redirect here ??
-  // useEffect(() => {
-  //   const interval = setTimeout(() => {
-
-  //   }, 3000);
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, [time]);
+  useEffect(() => {
+    const interval = setTimeout(() => {
+      setPhase('END');
+    }, 2000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <>

@@ -7,16 +7,17 @@ import Q3 from './questions/Q3';
 // import Q5 from './Q5';
 import EndMessage from './EndMessage';
 
-const FormController = ({ endQuestions }) => {
+const FormController = ({ setPhase }) => {
   const [component, setComponent] = useState(1);
   const [state, setState] = useState({});
   const [ms, setMS] = useState(0);
 
   const nextComponent = () => {
     if (component > 3) {
+      setPhase('END');
       return;
-      // endQuestions();
     }
+
     setComponent(component => component + 1);
   };
 
@@ -81,8 +82,12 @@ const FormController = ({ endQuestions }) => {
         {component === 4 && <Q4 state={state} handleChange={handleChange} />}
         {component === 5 && <Q5 state={state} handleChange={handleChange} />} 
         */}
-        {component <= 3 && <button onClick={nextComponent}>Go Next</button>}
-        {component > 3 && <EndMessage />}
+        {component <= 3 ? (
+          <button onClick={nextComponent}>Go Next</button>
+        ) : (
+          <EndMessage setPhase={setPhase} />
+        )}
+        {/* {component > 3 && <EndMessage />} */}
       </Card>
       {/* {component === 3 && (
         <button type="submit" onClick={submit}>
