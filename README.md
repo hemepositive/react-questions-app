@@ -28,3 +28,5 @@ https://www.simplypsychology.org/likert-scale.html
 
 DarkMode 
 https://css-tricks.com/a-dark-mode-toggle-with-react-and-themeprovider/
+
+https://thewebdev.info/2021/02/05/how-to-send-data-from-child-to-parent-component-with-react-hooks/
