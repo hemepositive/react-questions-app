@@ -7,7 +7,7 @@ import Q3 from './questions/Q3';
 import EndMessage from './EndMessage';
 // import State from './State';
 
-const FormController = () => {
+const FormController = ({ cancel }) => {
   const [component, setComponent] = useState(1);
   const [state, setState] = useState({});
   const [ms, setMS] = useState(0);
@@ -19,7 +19,6 @@ const FormController = () => {
 
   const handleTime = time => {
     setMS(time);
-    console.log(`Miliseconds: ${ms}`);
   };
 
   const handleChange = event => {
@@ -87,13 +86,12 @@ const FormController = () => {
         </button>
       )} */}
       {/* IDEA BELOW */}
-      {/* {page !== 4 && <button onClick={goNextPage}>Go Next</button>}
-      {page === 4 && (
+      {component !== 4 && <button onClick={cancel}>CANCEL</button>}
+      {/* {page === 4 && (
         <button type="submit" onClick={submit}>
           Submit
         </button>
       )} */}
-
       {/* <State state={state} /> */}
     </div>
   );
