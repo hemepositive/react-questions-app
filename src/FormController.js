@@ -7,17 +7,16 @@ import Q3 from './questions/Q3';
 // import Q5 from './Q5';
 import EndMessage from './EndMessage';
 
-const FormController = ({ setPhase }) => {
+const FormController = ({ endQuestions }) => {
   const [component, setComponent] = useState(1);
   const [state, setState] = useState({});
   const [ms, setMS] = useState(0);
 
   const nextComponent = () => {
     if (component > 3) {
-      setPhase('END');
+      endQuestions();
       return;
     }
-
     setComponent(component => component + 1);
   };
 
@@ -85,7 +84,7 @@ const FormController = ({ setPhase }) => {
         {component <= 3 ? (
           <button onClick={nextComponent}>Go Next</button>
         ) : (
-          <EndMessage setPhase={setPhase} />
+          <EndMessage />
         )}
         {/* {component > 3 && <EndMessage />} */}
       </Card>

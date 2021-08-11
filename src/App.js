@@ -54,7 +54,7 @@ export default function App() {
   };
 
   const endQuestions = () => {
-    setPhase('end');
+    setPhase('END');
   };
 
   const Home = () => {
@@ -71,7 +71,9 @@ export default function App() {
     <ThemeProvider theme={light === true ? lightTheme : darkTheme}>
       <GlobalStyles />
       {phase === 'HOME' && <Home startQuestions={startQuestions} />}
-      {phase === 'QUESTIONAIRE' && <FormController setPhase={setPhase} />}
+      {phase === 'QUESTIONAIRE' && (
+        <FormController endQuestions={endQuestions} />
+      )}
       {phase === 'END' && <h1>END</h1>}
     </ThemeProvider>
   );
