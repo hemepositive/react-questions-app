@@ -51,6 +51,7 @@ export default function App() {
 
   const startQuestions = e => {
     setLight(false);
+    // setPhase('QUESTIONAIRE');
   };
 
   const endQuestions = () => {

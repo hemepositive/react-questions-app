@@ -13,11 +13,11 @@ const FormController = ({ endQuestions }) => {
   const [ms, setMS] = useState(0);
 
   const nextComponent = () => {
+    setComponent(component => component + 1);
     if (component > 3) {
       endQuestions();
       return;
     }
-    setComponent(component => component + 1);
   };
 
   const handleTime = time => {
@@ -35,26 +35,19 @@ const FormController = ({ endQuestions }) => {
       ...state,
       [event.target.name]: value
     });
+    nextComponent(); // INDEX on Answer
   };
 
-  const submit = e => {
-    e.preventDefault();
-    setComponent();
-  };
+  // const submit = e => {
+  //   e.preventDefault();
+  //   setComponent();
+  // };
 
   return (
     <div>
-      {/* <h2 style={{ color: 'red', textTransform: 'uppercase' }}>
-        Form Controller
-      </h2> */}
       <div>
         <progress max="3" value={component} />
       </div>
-      {/* {ms && (
-        <h3 style={{ color: 'blue', textTransform: 'uppercase' }}>
-          Time: {ms}
-        </h3>
-      )} */}
       <Card>
         {component === 1 && (
           <Q1
@@ -77,31 +70,13 @@ const FormController = ({ endQuestions }) => {
             handleTime={handleTime}
           />
         )}
+
         {/* 
         {component === 4 && <Q4 state={state} handleChange={handleChange} />}
         {component === 5 && <Q5 state={state} handleChange={handleChange} />} 
-        */}
-        {component <= 3 ? (
-          <button onClick={nextComponent}>Go Next</button>
-        ) : (
-          <EndMessage />
-        )}
-        {/* {component > 3 && <EndMessage />} */}
+          */}
       </Card>
-      {/* {component === 3 && (
-        <button type="submit" onClick={submit}>
-          Submit
-        </button>
-      )} */}
-      {/* IDEA BELOW */}
-      {/* {page !== 4 && <button onClick={goNextPage}>Go Next</button>}
-      {page === 4 && (
-        <button type="submit" onClick={submit}>
-          Submit
-        </button>
-      )} */}
-
-      {/* <State state={state} /> */}
+      <button onClick={nextComponent}>Go Next</button>
     </div>
   );
 };
