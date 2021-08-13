@@ -7,14 +7,17 @@ import Q3 from './questions/Q3';
 // import Q5 from './Q5';
 import EndMessage from './EndMessage';
 
-const FormController = ({ endQuestions }) => {
+const FormController = ({ endQuestions, quit }) => {
   const [component, setComponent] = useState(1);
   const [state, setState] = useState({});
   const [ms, setMS] = useState(0);
 
   const nextComponent = () => {
+    console.log('nextComponent preIndex', component);
     setComponent(component => component + 1);
+    console.log('nextComponent postIndex', component);
     if (component > 3) {
+      console.log('!! component > 3', component);
       endQuestions();
       return;
     }
@@ -22,7 +25,6 @@ const FormController = ({ endQuestions }) => {
 
   const handleTime = time => {
     setMS(time);
-    // console.log(`Miliseconds: ${ms}`);
   };
 
   const handleChange = event => {
@@ -35,7 +37,9 @@ const FormController = ({ endQuestions }) => {
       ...state,
       [event.target.name]: value
     });
-    nextComponent(); // INDEX on Answer
+    setTimeout(() => {
+      nextComponent(); // INDEX on Answer
+    }, 500);
   };
 
   // const submit = e => {
@@ -45,10 +49,10 @@ const FormController = ({ endQuestions }) => {
 
   return (
     <div>
-      <div>
-        <progress max="3" value={component} />
-      </div>
       <Card>
+        <div>
+          <progress max="3" value={component} />
+        </div>
         {component === 1 && (
           <Q1
             state={state}
@@ -70,13 +74,13 @@ const FormController = ({ endQuestions }) => {
             handleTime={handleTime}
           />
         )}
-
+        {component > 3 && <EndMessage />}
         {/* 
         {component === 4 && <Q4 state={state} handleChange={handleChange} />}
         {component === 5 && <Q5 state={state} handleChange={handleChange} />} 
           */}
+        <button onClick={() => quit()}>QUIT</button>
       </Card>
-      <button onClick={nextComponent}>Go Next</button>
     </div>
   );
 };

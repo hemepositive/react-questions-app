@@ -6,7 +6,7 @@ import { GlobalStyles } from './styles/global';
 import FormController from './FormController';
 import Home from './Home';
 import EndMessage from './EndMessage';
-import Quit from './Quit'
+import Quit from './Quit';
 
 export default function App() {
   const [state, setState] = useState({});

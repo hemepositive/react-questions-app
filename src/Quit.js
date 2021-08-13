@@ -14,7 +14,7 @@ export default () => {
   return (
     <>
       <h2>Get too uncomfortable?</h2>
-      <h3>What to know more?</h3>
+      <h3>You need help.</h3>
       <a href="https://www.google.com">Google</a>
     </>
   );
