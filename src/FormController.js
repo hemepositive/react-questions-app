@@ -13,11 +13,8 @@ const FormController = ({ endQuestions, quit }) => {
   const [ms, setMS] = useState(0);
 
   const nextComponent = () => {
-    console.log('nextComponent preIndex', component);
     setComponent(component => component + 1);
-    console.log('nextComponent postIndex', component);
     if (component > 3) {
-      console.log('!! component > 3', component);
       endQuestions();
       return;
     }
@@ -38,7 +35,11 @@ const FormController = ({ endQuestions, quit }) => {
       [event.target.name]: value
     });
     setTimeout(() => {
-      nextComponent(); // INDEX on Answer
+      if (component < 3) {
+        nextComponent(); // INDEX on Answer
+      } else {
+        endQuestions();
+      }
     }, 500);
   };
 
