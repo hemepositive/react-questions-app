@@ -4,12 +4,13 @@ import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './styles/theme';
 import { GlobalStyles } from './styles/global';
 import FormController from './FormController';
+import Home from './Home';
 import EndMessage from './EndMessage';
+import Quit from './Quit'
 
 export default function App() {
   const [state, setState] = useState({});
   const [phase, setPhase] = useState('HOME');
-  const [on, setOn] = useState(false);
   const [light, setLight] = useState(true);
 
   // // The function that toggles between themes
@@ -50,22 +51,19 @@ export default function App() {
   // };
 
   const startQuestions = e => {
+    console.log('startQuestions');
     setLight(false);
-    // setPhase('QUESTIONAIRE');
+    setPhase('QUESTIONAIRE');
   };
 
   const endQuestions = () => {
+    console.log('endQuestions');
     setPhase('END');
   };
 
-  const Home = () => {
-    return (
-      <>
-        <h1>MultiStep Form</h1>
-        <p>Answer questions honestly but quickly.</p>
-        <button onClick={() => setPhase('QUESTIONAIRE')}>Start</button>
-      </>
-    );
+  const quit = () => {
+    console.log('quit');
+    setPhase('QUIT');
   };
 
   return (
@@ -73,9 +71,10 @@ export default function App() {
       <GlobalStyles />
       {phase === 'HOME' && <Home startQuestions={startQuestions} />}
       {phase === 'QUESTIONAIRE' && (
-        <FormController endQuestions={endQuestions} />
+        <FormController endQuestions={endQuestions} quit={quit} />
       )}
-      {phase === 'END' && <h1>END</h1>}
+      {phase === 'END' && <EndMessage />}
+      {phase === 'QUIT' && <Quit />}
     </ThemeProvider>
   );
 }
