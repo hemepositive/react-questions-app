@@ -2,6 +2,9 @@
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-ptepjz)
 
+TODO:
+toggle to light mode outside questionaire
+incognito icons
 
 Ideas, concepts from the following links
 
