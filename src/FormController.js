@@ -7,9 +7,9 @@ import Q3 from './questions/Q3';
 // import Q5 from './Q5';
 import EndMessage from './EndMessage';
 
-const FormController = ({ endQuestions, quit }) => {
+const FormController = ({ endQuestions, quit, state, setState }) => {
+  // const [state, setState] = useState({});
   const [component, setComponent] = useState(1);
-  const [state, setState] = useState({});
   const [ms, setMS] = useState(0);
 
   const nextComponent = () => {

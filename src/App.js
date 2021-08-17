@@ -9,7 +9,7 @@ import EndMessage from './EndMessage';
 import Quit from './Quit';
 
 export default function App() {
-  // const [state, setState] = useState({});
+  const [state, setState] = useState({});
   const [phase, setPhase] = useState('HOME');
   const [light, setLight] = useState(true);
 
@@ -31,7 +31,12 @@ export default function App() {
       <GlobalStyles />
       {phase === 'HOME' && <Home startQuestions={startQuestions} />}
       {phase === 'QUESTIONAIRE' && (
-        <FormController endQuestions={endQuestions} quit={quit} />
+        <FormController
+          state={state}
+          setState={setState}
+          endQuestions={endQuestions}
+          quit={quit}
+        />
       )}
       {phase === 'END' && <EndMessage />}
       {phase === 'QUIT' && <Quit />}
