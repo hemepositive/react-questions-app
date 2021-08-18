@@ -7,6 +7,7 @@ import FormController from './FormController';
 import Home from './Home';
 import EndMessage from './EndMessage';
 import Quit from './Quit';
+import AppContext from './context';
 
 export default function App() {
   // const [state, setState] = useState({});
@@ -29,12 +30,14 @@ export default function App() {
   return (
     <ThemeProvider theme={light === true ? lightTheme : darkTheme}>
       <GlobalStyles />
-      {phase === 'HOME' && <Home startQuestions={startQuestions} />}
-      {phase === 'QUESTIONAIRE' && (
-        <FormController endQuestions={endQuestions} quit={quit} />
-      )}
-      {phase === 'END' && <EndMessage />}
-      {phase === 'QUIT' && <Quit />}
+      <AppContext.Provider value={{ id: '72', me: 'Jonathan' }}>
+        {phase === 'HOME' && <Home startQuestions={startQuestions} />}
+        {phase === 'QUESTIONAIRE' && (
+          <FormController endQuestions={endQuestions} quit={quit} />
+        )}
+        {phase === 'END' && <EndMessage />}
+        {phase === 'QUIT' && <Quit />}
+      </AppContext.Provider>
     </ThemeProvider>
   );
 }
